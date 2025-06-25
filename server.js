@@ -5,7 +5,8 @@ import * as dotenv from "dotenv";
 import jobRouter from "./routes/jobRouter.js";
 import mongoose from "mongoose";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
-import { validateTest } from "./middleware/validationMiddleware.js";
+
+// TEST: import { validateTest } from "./middleware/validationMiddleware.js";
 
 dotenv.config();
 const app = express();
@@ -20,14 +21,14 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.post(
-  "/api/v1/test",
-  validateTest,
-  (req, res) => {
-    const { name } = req.body;
-    res.json({ message: `hello ${name}` });
-  }
-);
+// app.post(
+//   "/api/v1/test",
+//   validateTest,
+//   (req, res) => {
+//     const { name } = req.body;
+//     res.json({ message: `hello ${name}` });
+//   }
+// );
 
 app.use("/api/v1/jobs", jobRouter);
 
