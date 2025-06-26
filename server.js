@@ -3,6 +3,7 @@ import "express-async-errors";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 import jobRouter from "./routes/jobRouter.js";
+import authRouter from "./routes/authRouter.js";
 import mongoose from "mongoose";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 // );
 
 app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/auth", authRouter);
 
 // Not Found Middleware
 
