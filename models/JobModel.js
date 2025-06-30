@@ -17,7 +17,11 @@ const JobSchema = new mongoose.Schema({
   jobLocation: {
     type: String,
     default: 'Los Angeles',
-  }
+  },
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Job', JobSchema);
