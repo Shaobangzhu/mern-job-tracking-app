@@ -7,6 +7,7 @@ import authRouter from "./routes/authRouter.js";
 import mongoose from "mongoose";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
+import cookieParser from "cookie-parser";
 
 // TEST: import { validateTest } from "./middleware/validationMiddleware.js";
 
@@ -17,20 +18,12 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(cookieParser());
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-
-// app.post(
-//   "/api/v1/test",
-//   validateTest,
-//   (req, res) => {
-//     const { name } = req.body;
-//     res.json({ message: `hello ${name}` });
-//   }
-// );
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
