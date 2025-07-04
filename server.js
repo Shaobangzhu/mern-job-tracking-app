@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-// Test Proxy Set-up
+// Test Proxy Set-up & Axios
 app.get('/api/v1/test', (req, res) => {
   res.json({ msg: 'test route' });
 });
